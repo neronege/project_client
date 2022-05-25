@@ -3,10 +3,40 @@
    <label for=""> Get datas </label> 
    
      <button (click)="getClick()">Get</button>
+     <table>
+      <td>
      <input type="number" [value]="category.entities[0].id">
      <input type="string" [value]="category.entities[0].title">
      <input type="string" [value]="category.entities[0].description">
- 
+      </td>
+      <td>
+     <input type="number" [value]="category.entities[1].id">
+     <input type="string" [value]="category.entities[1].title">
+     <input type="string" [value]="category.entities[1].description">
+      </td>
+      <td>
+      <input type="number" [value]="category.entities[2].id">
+      <input type="string" [value]="category.entities[2].title">
+      <input type="string" [value]="category.entities[2].description">
+      </td>
+   </table>
+   <table>
+      <td>
+      <input type="number" [value]="category.entities[3].id">
+      <input type="string" [value]="category.entities[3].title">
+      <input type="string" [value]="category.entities[3].description">
+      </td>
+      <td>
+      <input type="number" [value]="category.entities[4].id">
+      <input type="string" [value]="category.entities[4].title">
+      <input type="string" [value]="category.entities[4].description">
+      </td>
+      <td>
+      <input type="number" [value]="category.entities[5].id">
+      <input type="string" [value]="category.entities[5].title">
+      <input type="string" [value]="category.entities[5].description">
+      </td>
+   </table>
      
   </div>  
   <p></p>
@@ -21,7 +51,7 @@
    <div>
    <label for="">Put datas</label> 
       
-      <input type="text" value="{{category}}" placeholder="name">
+      <input type="text" value="" placeholder="name">
       <input type="text" value="" placeholder="sir-name">
       <input type="text" value="" placeholder="job">
       

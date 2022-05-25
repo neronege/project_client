@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  
 import { BackendService } from './backend.service';
-import { category } from './models/category';
+import  category from './models/category';
 
  
 @Component({
@@ -16,32 +16,64 @@ export class AppComponent implements OnInit {
   }
   
   category : category = {
+    entities: [
+      {
+        id: 1,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+      {
+        id: 2,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+      {
+        id: 5,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+      {
+        id: 6,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+      {
+        id: 7,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+      {
+        id: 8,
+        title: "",
+        description: "",
+        password: "",
+        repassword: ""
+      },
+    ]
     
-    entities:[{
-        id:null,
-        title: '',
-        description: '',
-        password: '',
-        repassword: ''}]
-   
   };
-
-
-  
-  
     
   constructor(private BackendService:BackendService){
 
   }
   
-
   ngOnInit(): void {
    
    this.BackendService.getRepos().subscribe(
      (response)=> {
       
         this.category = response;
-        console.log(this.category.entities[0])
+        console.log(this.category.entities[1])
          
       },
      (err)=> {
@@ -49,17 +81,19 @@ export class AppComponent implements OnInit {
      }
    )
   }
+
  
   
   
   
    getClick(){
-     
-    return this.category.entities[0].title
+   
+    console.log(this.category.entities[4])
     
      }
      putClick(){
-   
+      debugger;
+      var note = this.category
     }
     postClick(){
      
