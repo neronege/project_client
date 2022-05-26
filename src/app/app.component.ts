@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
- 
-import { BackendService } from './backend.service';
-import  category from './models/category';
 
- 
+import { BackendService } from './backend.service';
+import category from './models/category';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,95 +14,49 @@ export class AppComponent implements OnInit {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-  
-  category : category = {
-    entities: [
-      {
-        id: 1,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-      {
-        id: 2,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-      {
-        id: 5,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-      {
-        id: 6,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-      {
-        id: 7,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-      {
-        id: 8,
-        title: "",
-        description: "",
-        password: "",
-        repassword: ""
-      },
-    ]
-    
-  };
-    
-  constructor(private BackendService:BackendService){
+
+  public categories: Array<any> = [];
+  public category: any = null;
+
+  constructor(private service: BackendService) {
 
   }
-  
+
   ngOnInit(): void {
-   
-   this.BackendService.getRepos().subscribe(
-     (response)=> {
-      
-        this.category = response;
-        console.log(this.category.entities[1])
-         
-      },
-     (err)=> {
-
-     }
-   )
+ 
+  }
+  readCategories() {
+    this.service.getCategory().subscribe((data: any) => {
+      this.categories = data;
+      this.category = this.categories[2];
+      console.log(this.categories);
+    })
   }
 
- 
-  
-  
-  
-   getClick(){
-   
-    console.log(this.category.entities[4])
-    
-     }
-     putClick(){
-      debugger;
-      var note = this.category
-    }
-    postClick(){
-     
-    }
-    deleteClick(){
-     
-    }
-  
+
+
+
+
+  getClick() {
+
+    this.readCategories();
+
+  }
+
+  putClick() {
+    console.log("put-category", this.category);
+    this.service.putCategory(this.category.id, this.category).subscribe(() => {
+      this.readCategories();
+    });
+  }
+  postClick() {
+
+  }
+  deleteClick() {
+
+  }
+
 }
-  
- 
+
+
 

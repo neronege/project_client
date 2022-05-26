@@ -1,34 +1,28 @@
 import { Injectable } from '@angular/core';
- 
-import { HttpClient} from '@angular/common/http';
+
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import category from './models/category';
-import {updateCategoryRequest} from './models/updateCategoryRequest';
+import { updateCategoryRequest } from './models/updateCategoryRequest';
 
- 
 
- 
+
+
 @Injectable()
 export class BackendService {
- 
-  baseURL: string = "https://localhost:44377";
- 
+
+  baseURL: string = "https://localhost:5001";
+
   constructor(private HttpClient: HttpClient) {
   }
- 
-  getRepos(): Observable<category> {
-    return this.HttpClient.get<category>(this.baseURL+"/api"+"/Values")
+
+  getCategory() {
+    return this.HttpClient.get(this.baseURL + "/api" + "/Category")
   }
-  // putRepos(id : number, categoryRequest:category): Observable<category> {
-  //   const updateCategoryRequest : updateCategoryRequest = {
-  //     id : categoryRequest.id,
-  //     title: categoryRequest.title,
-  //     description: categoryRequest.description,
-  //     password : categoryRequest.password,
-  //     repassword : categoryRequest.repassword
-  //     }
-  //   }
-  //   return this.HttpClient.put<category>(this.baseURL+"/api"+"/Values"+{id},updateCategoryRequest)
+  putCategory(id: number, category: any) {
+    return this.HttpClient.put(this.baseURL + "/api" + "/Category/" + id, category);
   }
+
+}
 
 
