@@ -1,10 +1,22 @@
-<div>
+<div class="container">
   <div>
-    <label for=""> Get datas </label>
-    <button (click)="getClick()">Get</button>
+    <label class="label"> Get datas </label>
+    <button (click)="getClick()" class="button is-success" style="height: 25px;">Get</button>
 
    
-    <table *ngIf ="categories.length > 0" border="1">
+    <table  class="table" *ngIf ="categories.length > 0" border="1" style="background-color:rosybrown ;">
+      <thead>
+        <tr>
+          <th><abbr title="Position">Id</abbr></th>
+    
+          <th><abbr title="Played">Title</abbr></th>
+          <th><abbr title="Won">Description</abbr></th>
+
+          <th><abbr title="Goal difference">createdOn</abbr></th>
+          <th><abbr title="Points">modifiedOn</abbr></th>
+         
+        </tr>
+      </thead>
       <tr *ngFor="let cat of categories">
         <td>
           {{cat.id}}
@@ -15,38 +27,41 @@
         <td>
           {{cat.description}}
         </td>
+        <td>
+          {{cat.createdOn}}
+        </td>
+        <td>
+          {{cat.modifiedOn}}
+        </td>
+       
 
       </tr>
     </table>
   </div>
-  <div *ngIf ="category != null">
-    <input type="number" [(ngModel)]="category.id" />
-    <input type="text" [(ngModel)]="category.title" />
-    <input type="text" [(ngModel)]="category.description" />
-    <button (click)="putClick()">
-      PUT !!!
+  <br>
+  <div  *ngIf ="category != null">
+    <input type="number"   [value]="category.id" style="background-color:rgb(199, 188, 188) ;"  />
+    <input type="text"     [value]="category.title" style="background-color:rgb(199, 188, 188) ;" />
+    <input type="text"     [value]="category.description" style="background-color:rgb(199, 188, 188) ;" />
+    <button  (click)="putClick()" class="button is-link" style="height: 25px;">
+      PUT 
     </button>
   </div>
-
-  <!--<div>
-    <label for="">Post datas</label>
-    <input type="text" value="{{category}}" placeholder="name">
-    <input type="text" value="" placeholder="sir-name">
-    <input type="text" value="" placeholder="job">
-    <button (click)="postClick()">Post</button>
-  </div>-->
-  <!--<div>
-    <label for="">Put datas</label>
-
-    <input type="text" value="" placeholder="name">
-    <input type="text" value="" placeholder="sir-name">
-    <input type="text" value="" placeholder="job">
-
-    <button (click)="putClick()">Put</button>
-  </div>-->
-  <!--<div>
-    <label for="">Delete datas</label>
-    <button (click)="deleteClick()">Delete</button>
-
-  </div>-->
+ <br>
+  <div *ngIf ="newCategory != null">
+    <input type="text" placeholder="title"        [(ngModel)]="newCategory.title" style="background-color:rgb(199, 188, 188)  ;" />
+    <input type="text" placeholder="description"  [(ngModel)]="newCategory.description" style="background-color:rgb(199, 188, 188)  ;" />
+    <input type="text" placeholder="password"     [(ngModel)]="newCategory.password" style="background-color:rgb(199, 188, 188)  ;" />
+    <input type="text" placeholder="repassword"   [(ngModel)]="newCategory.rePassword" style="background-color:rgb(199, 188, 188)  ;" />
+    <button (click)="postClick()" class="button is-warning" style="height: 25px;">
+      POST
+    </button>
+  </div>
+  <br>
+  <div *ngIf ="deleteCategory != null">
+    <label class="label">Delete datas</label>
+    <input type="number" style="background-color:rgb(199, 188, 188)  ;" [(ngModel)]="deleteCategory.id" >
+    <button (click)="deleteClick()" class="button is-danger" style="height: 25px; ">Delete</button>
+   
+  </div>
 </div>

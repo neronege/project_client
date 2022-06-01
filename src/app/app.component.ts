@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BackendService } from './backend.service';
-import category from './models/category';
+
 
 
 @Component({
@@ -11,13 +11,20 @@ import category from './models/category';
 })
 
 export class AppComponent implements OnInit {
+  
   title(title: any) {
     throw new Error('Method not implemented.');
   }
 
   public categories: Array<any> = [];
   public category: any = null;
-
+  public newCategory :any = {
+    title: "",
+    description: "",
+    password: "",
+    rePassword: ""
+  };
+  public deleteCategory : any = null;
   constructor(private service: BackendService) {
 
   }
@@ -28,7 +35,10 @@ export class AppComponent implements OnInit {
   readCategories() {
     this.service.getCategory().subscribe((data: any) => {
       this.categories = data;
+     
       this.category = this.categories[2];
+      this.deleteCategory = this.categories[5]
+      console.log(this.newCategory);
       console.log(this.categories);
     })
   }
@@ -50,10 +60,23 @@ export class AppComponent implements OnInit {
     });
   }
   postClick() {
-
+  
+    this.service.postCategory(this.newCategory).subscribe((data:any) => {
+    this.newCategory =data;
+    this.newCategory.id= data.id;
+    this.newCategory.title = data.title;
+    this.newCategory.description = data.description;
+    this.newCategory.password = data.password;
+    this.newCategory.rePassword = data.rePassword;
+     }); 
+     this.readCategories();
   }
   deleteClick() {
+    console.log()
+    this.service.deleteCategory(this.deleteCategory.id).subscribe(() =>{
+      this.readCategories();
 
+    });
   }
 
 }
