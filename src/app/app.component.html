@@ -1,5 +1,5 @@
-<div class="container">
-  <div>
+<div class="container ">
+  <div class="column is-offset-one-fifth" >
     <label class="label"> Get datas </label>
     <button (click)="getClick()" class="button is-success" style="height: 25px;">Get</button>
 
@@ -39,7 +39,7 @@
     </table>
   </div>
   <br>
-  <div  *ngIf ="category != null">
+  <div  *ngIf ="category != null" class="column is-offset-one-fifth">
     <input type="number"   [value]="category.id" style="background-color:rgb(199, 188, 188) ;"  />
     <input type="text"     [value]="category.title" style="background-color:rgb(199, 188, 188) ;" />
     <input type="text"     [value]="category.description" style="background-color:rgb(199, 188, 188) ;" />
@@ -48,7 +48,7 @@
     </button>
   </div>
  <br>
-  <div *ngIf ="newCategory != null">
+  <div class="column is-offset-one-fifth" *ngIf ="newCategory != null">
     <input type="text" placeholder="title"        [(ngModel)]="newCategory.title" style="background-color:rgb(199, 188, 188)  ;" />
     <input type="text" placeholder="description"  [(ngModel)]="newCategory.description" style="background-color:rgb(199, 188, 188)  ;" />
     <input type="text" placeholder="password"     [(ngModel)]="newCategory.password" style="background-color:rgb(199, 188, 188)  ;" />
@@ -58,7 +58,7 @@
     </button>
   </div>
   <br>
-  <div *ngIf ="deleteCategory != null">
+  <div class="column is-offset-one-fifth" *ngIf ="deleteCategory != null">
     <label class="label">Delete datas</label>
     <input type="number" style="background-color:rgb(199, 188, 188)  ;" [(ngModel)]="deleteCategory.id" >
     <button (click)="deleteClick()" class="button is-danger" style="height: 25px; ">Delete</button>
