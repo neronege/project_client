@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
-
+ 
   public categories: Array<any> = [];
   public category: any = null;
   public newCategory :any = {
@@ -32,14 +32,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
  
   }
+ 
   readCategories() {
     this.service.getCategory().subscribe((data: any) => {
-      this.categories = data;
-     
-      this.category = this.categories[2];
-      this.deleteCategory = this.categories[5]
-      console.log(this.newCategory);
-      console.log(this.categories);
+    this.categories = data;
+  
+    
+    console.log(this.newCategory);
+    console.log(this.categories);
+   
+    
     })
   }
 
@@ -71,11 +73,11 @@ export class AppComponent implements OnInit {
      }); 
      this.readCategories();
   }
-  deleteClick() {
-    console.log()
-    this.service.deleteCategory(this.deleteCategory.id).subscribe(() =>{
+  deleteClick(index:any) {
+  
+    this.service.deleteCategory(index).subscribe(() =>{
       this.readCategories();
-
+      console.log(this.categories)
     });
   }
 

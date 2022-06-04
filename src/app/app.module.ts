@@ -6,16 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackendService } from './backend.service';
 import { FormsModule } from '@angular/forms';
+import { UpdateHomeComponent } from './update/update-home/update-home.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UpdateHomeComponent   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    UpdateHomeComponent
+  
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]

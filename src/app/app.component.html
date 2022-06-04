@@ -1,3 +1,4 @@
+import { UpdateHomeComponent } from './update/update-home/update-home.component';
 <div class="container ">
   <div class="column is-offset-one-fifth" >
     <label class="label"> Get datas </label>
@@ -8,13 +9,8 @@
       <thead>
         <tr>
           <th><abbr title="Position">Id</abbr></th>
-    
           <th><abbr title="Played">Title</abbr></th>
           <th><abbr title="Won">Description</abbr></th>
-
-          <th><abbr title="Goal difference">createdOn</abbr></th>
-          <th><abbr title="Points">modifiedOn</abbr></th>
-         
         </tr>
       </thead>
       <tr *ngFor="let cat of categories">
@@ -27,41 +23,41 @@
         <td>
           {{cat.description}}
         </td>
-        <td>
-          {{cat.createdOn}}
-        </td>
-        <td>
-          {{cat.modifiedOn}}
-        </td>
-       
-
+        <div *ngIf ="cat.id != null">
+        <button (click)="deleteClick(cat.id)" class="button is-danger" style="height: 25px; ">Delete</button>
+      </div>
+      <div >
+        <button  (click)="putClick()" class="button is-link" style="height: 25px;">
+          PUT 
+        </button>
+      </div>
       </tr>
     </table>
   </div>
   <br>
-  <div  *ngIf ="category != null" class="column is-offset-one-fifth">
-    <input type="number"   [value]="category.id" style="background-color:rgb(199, 188, 188) ;"  />
-    <input type="text"     [value]="category.title" style="background-color:rgb(199, 188, 188) ;" />
-    <input type="text"     [value]="category.description" style="background-color:rgb(199, 188, 188) ;" />
-    <button  (click)="putClick()" class="button is-link" style="height: 25px;">
-      PUT 
-    </button>
-  </div>
- <br>
+  <!-- <div  *ngIf ="category != null" class="column is-offset-one-fifth">
+    <input type="number"   [value]="category.id"    class="background"  />
+    <input type="text"     [value]="category.title"   class="background" />
+    <input type="text"     [value]="category.description"   class="background" />
+   
+  </div> -->
+
   <div class="column is-offset-one-fifth" *ngIf ="newCategory != null">
-    <input type="text" placeholder="title"        [(ngModel)]="newCategory.title" style="background-color:rgb(199, 188, 188)  ;" />
-    <input type="text" placeholder="description"  [(ngModel)]="newCategory.description" style="background-color:rgb(199, 188, 188)  ;" />
-    <input type="text" placeholder="password"     [(ngModel)]="newCategory.password" style="background-color:rgb(199, 188, 188)  ;" />
-    <input type="text" placeholder="repassword"   [(ngModel)]="newCategory.rePassword" style="background-color:rgb(199, 188, 188)  ;" />
+    <input type="text" placeholder="title"        [(ngModel)]="newCategory.title"   class="background" />
+    <input type="text" placeholder="description"  [(ngModel)]="newCategory.description"   class="background" />
+    <input type="text" placeholder="password"     [(ngModel)]="newCategory.password"    class="background" />
+    <input type="text" placeholder="repassword"   [(ngModel)]="newCategory.rePassword"    class="background" />
     <button (click)="postClick()" class="button is-warning" style="height: 25px;">
       POST
     </button>
   </div>
   <br>
-  <div class="column is-offset-one-fifth" *ngIf ="deleteCategory != null">
-    <label class="label">Delete datas</label>
-    <input type="number" style="background-color:rgb(199, 188, 188)  ;" [(ngModel)]="deleteCategory.id" >
-    <button (click)="deleteClick()" class="button is-danger" style="height: 25px; ">Delete</button>
+  <div  *ngIf ="deleteCategory != null">
+  
+   <!--<input type="number" class="background" [(ngModel)]="deleteCategory.id" >
+   --> 
    
   </div>
 </div>
+
+<updateHome></updateHome>
