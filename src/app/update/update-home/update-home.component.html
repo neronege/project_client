@@ -1,84 +1,28 @@
-<p>up<div class="field">
-    <label class="label">Name</label>
-    <div class="control">
-      <input class="input" type="text" placeholder="Text input">
-    </div>
-  </div>
+<div *ngIf ="this.app.category != null" class="new">
   
+    <div  class="column is-offset-4">
+        <div class="field">
+        <input type="number" placeholder="id"    class="input is-primary input_update"  [(ngModel)]="this.app.category.id"   />
+        </div>
+        <div class="field">
+        <input type="text"  placeholder="Title"    class="input is-primary input_update"  [(ngModel)]="this.app.category.title"      />
+        </div>
+        <div class="field">
+        <input type="text"  placeholder="Description"    class="input is-primary input_update" [(ngModel)]="this.app.category.description"    />
+        </div>
   <div class="field">
-    <label class="label">Username</label>
-    <div class="control has-icons-left has-icons-right">
-      <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-      <span class="icon is-small is-left">
-        <i class="fas fa-user"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-check"></i>
-      </span>
-    </div>
-    <p class="help is-success">This username is available</p>
+      <a target="_blank">
+      <button (click)="updateClick()" class="button is-success " >
+        Update
+      </button>
+    </a>
   </div>
-  
-  <div class="field">
-    <label class="label">Email</label>
-    <div class="control has-icons-left has-icons-right">
-      <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-      <span class="icon is-small is-left">
-        <i class="fas fa-envelope"></i>
-      </span>
-      <span class="icon is-small is-right">
-        <i class="fas fa-exclamation-triangle"></i>
-      </span>
-    </div>
-    <p class="help is-danger">This email is invalid</p>
-  </div>
-  
-  <div class="field">
-    <label class="label">Subject</label>
-    <div class="control">
-      <div class="select">
-        <select>
-          <option>Select dropdown</option>
-          <option>With options</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  
-  <div class="field">
-    <label class="label">Message</label>
-    <div class="control">
-      <textarea class="textarea" placeholder="Textarea"></textarea>
-    </div>
-  </div>
-  
-  <div class="field">
-    <div class="control">
-      <label class="checkbox">
-        <input type="checkbox">
-        I agree to the <a href="#">terms and conditions</a>
-      </label>
-    </div>
-  </div>
-  
-  <div class="field">
-    <div class="control">
-      <label class="radio">
-        <input type="radio" name="question">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="question">
-        No
-      </label>
-    </div>
-  </div>
-  
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link">Submit</button>
-    </div>
-    <div class="control">
-      <button class="button is-link is-light">Cancel</button>
-    </div>
-  </div>
+</div>
+</div>
+
+
+<!--   
+  [(ngModel)]="this.app.category.id" 
+ [(ngModel)]="this.app.category.title" 
+   [(ngModel)]="this.app.category.description"
+ -->

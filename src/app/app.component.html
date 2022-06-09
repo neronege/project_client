@@ -1,9 +1,10 @@
-import { UpdateHomeComponent } from './update/update-home/update-home.component';
+<div class="landing_page">
 <div class="container ">
   <div class="column is-offset-one-fifth" >
     <label class="label"> Get datas </label>
-    <button (click)="getClick()" class="button is-success" style="height: 25px;">Get</button>
-
+    <div class="field">
+    <button (click)="getClick()" class="button is-success button_weight" >Get</button>
+  </div>
    
     <table  class="table" *ngIf ="categories.length > 0" border="1" style="background-color:rosybrown ;">
       <thead>
@@ -23,31 +24,36 @@ import { UpdateHomeComponent } from './update/update-home/update-home.component'
         <td>
           {{cat.description}}
         </td>
-        <div *ngIf ="cat.id != null">
-        <button (click)="deleteClick(cat.id)" class="button is-danger" style="height: 25px; ">Delete</button>
+        <div *ngIf ="cat.id != null" class="field">
+        <button (click)="deleteClick(cat.id)" class="button is-danger button_weight" >Delete</button>
       </div>
-      <div >
-        <button  (click)="putClick()" class="button is-link" style="height: 25px;">
+      <div *ngIf ="cat.id != null" >
+      <a   target="_blank">
+        <button (click)="putButton()" class="button is-link button_weight" >
           PUT 
         </button>
-      </div>
+    </a>
+  </div>
+    
       </tr>
     </table>
   </div>
   <br>
   <!-- <div  *ngIf ="category != null" class="column is-offset-one-fifth">
-    <input type="number"   [value]="category.id"    class="background"  />
-    <input type="text"     [value]="category.title"   class="background" />
-    <input type="text"     [value]="category.description"   class="background" />
-   
+    <input type="number"   [(ngModel)]="category.id"    class="background"  />
+    <input type="text"     [(ngModel)]="category.title"   class="background" />
+    <input type="text"     [(ngModel)]="category.description"   class="background" />
+    <button (click)="putClick()" class="button is-link" style="height: 25px;">
+          PUT 
+        </button>
   </div> -->
 
   <div class="column is-offset-one-fifth" *ngIf ="newCategory != null">
-    <input type="text" placeholder="title"        [(ngModel)]="newCategory.title"   class="background" />
-    <input type="text" placeholder="description"  [(ngModel)]="newCategory.description"   class="background" />
-    <input type="text" placeholder="password"     [(ngModel)]="newCategory.password"    class="background" />
-    <input type="text" placeholder="repassword"   [(ngModel)]="newCategory.rePassword"    class="background" />
-    <button (click)="postClick()" class="button is-warning" style="height: 25px;">
+    <input type="text" placeholder="title"        [(ngModel)]="newCategory.title"   class="input is-primary input_weight" />
+    <input type="text" placeholder="description"  [(ngModel)]="newCategory.description"   class="input is-primary input_weight" />
+    <input type="text" placeholder="password"     [(ngModel)]="newCategory.password"    class="input is-primary input_weight" />
+    <input type="text" placeholder="repassword"   [(ngModel)]="newCategory.rePassword"    class="input is-primary input_weight" />
+    <button (click)="postClick()" class="button is-warning " >
       POST
     </button>
   </div>
@@ -59,5 +65,8 @@ import { UpdateHomeComponent } from './update/update-home/update-home.component'
    
   </div>
 </div>
+</div>
+<router-outlet></router-outlet>
+<!-- <div *ngif="this.x != true">
 
-<updateHome></updateHome>
+</div> -->

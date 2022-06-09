@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BackendService } from './backend.service';
-
+import * as $ from "jquery";
 
 
 @Component({
@@ -15,8 +15,9 @@ export class AppComponent implements OnInit {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
- 
+
   public categories: Array<any> = [];
+  public cat :Array<any> = [];
   public category: any = null;
   public newCategory :any = {
     title: "",
@@ -36,12 +37,17 @@ export class AppComponent implements OnInit {
   readCategories() {
     this.service.getCategory().subscribe((data: any) => {
     this.categories = data;
-  
-    
+    this.category=this.categories[0]
     console.log(this.newCategory);
     console.log(this.categories);
    
-    
+    for (var _i = 0; _i < this.categories.length; _i++) {
+      const num = this.categories[_i];
+      console.log(num);
+      this.cat = num;
+      console.log(this.cat)
+  }
+  
     })
   }
 
@@ -50,12 +56,21 @@ export class AppComponent implements OnInit {
 
 
   getClick() {
-
+    
     this.readCategories();
 
   }
 
-  putClick() {
+  putButton() {
+  
+    
+    $(".landing_page").hide();
+    $(".new").show();
+    
+    console.log('çalıştı')}
+    
+    putClick(){
+   
     console.log("put-category", this.category);
     this.service.putCategory(this.category.id, this.category).subscribe(() => {
       this.readCategories();
