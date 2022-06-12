@@ -39,16 +39,8 @@
       </tr>
     </table>
   </div>
-  <br>
-  <!-- <div  *ngIf ="category != null" class="column is-offset-one-fifth">
-    <input type="number"   [(ngModel)]="category.id"    class="background"  />
-    <input type="text"     [(ngModel)]="category.title"   class="background" />
-    <input type="text"     [(ngModel)]="category.description"   class="background" />
-    <button (click)="putClick()" class="button is-link" style="height: 25px;">
-          PUT 
-        </button>
-        style="background-color:"
-  </div> -->
+  
+
 
   <div class="column is-offset-one-fifth" *ngIf ="newCategory != null">
     <input type="text" placeholder="title"        [(ngModel)]="newCategory.title"   class="input is-primary input_weight" />
