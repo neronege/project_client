@@ -6,7 +6,7 @@
     <button (click)="getClick()" class="button is-success button_weight" >Get</button>
   </div>
    
-    <table  class="table" *ngIf ="categories.length > 0" border="1" style="background-color:rosybrown ;">
+    <table  class="table background" *ngIf ="categories.length > 0" border="1" >
       <thead>
         <tr>
           <th><abbr title="Position">Id</abbr></th>
@@ -15,6 +15,7 @@
         </tr>
       </thead>
       <tr *ngFor="let cat of categories">
+        
         <td>
           {{cat.id}}
         </td>
@@ -24,12 +25,12 @@
         <td>
           {{cat.description}}
         </td>
-        <div *ngIf ="cat.id != null" class="field">
+        <div *ngIf ="cat.id != null" >
         <button (click)="deleteClick(cat.id)" class="button is-danger button_weight" >Delete</button>
       </div>
       <div *ngIf ="cat.id != null" >
       <a   target="_blank">
-        <button (click)="putButton()" class="button is-link button_weight" >
+        <button (click)="putButton(cat.id,cat)" class="button is-link button_weight" >
           PUT 
         </button>
     </a>
@@ -46,6 +47,7 @@
     <button (click)="putClick()" class="button is-link" style="height: 25px;">
           PUT 
         </button>
+        style="background-color:"
   </div> -->
 
   <div class="column is-offset-one-fifth" *ngIf ="newCategory != null">
@@ -57,16 +59,8 @@
       POST
     </button>
   </div>
-  <br>
-  <div  *ngIf ="deleteCategory != null">
   
-   <!--<input type="number" class="background" [(ngModel)]="deleteCategory.id" >
-   --> 
-   
-  </div>
+
 </div>
 </div>
 <router-outlet></router-outlet>
-<!-- <div *ngif="this.x != true">
-
-</div> -->

@@ -6,7 +6,7 @@ width: 100px;
 }
 
 .background {
-    background-color: antiquewhite;
+    background-color: rosybrown ;;
 }
 .new{
     display: none;
@@ -14,7 +14,8 @@ width: 100px;
 
 .button_weight{
     height: 25px;
+    margin: 0px 0px 3px 0px;
     }
-    .input_update{
-        width: 150px;
-        }
+.input_update{
+    width: 150px;
+}

@@ -4,6 +4,7 @@ import { BackendService } from './backend.service';
 import * as $ from "jquery";
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit {
   }
 
   public categories: Array<any> = [];
-  public cat :Array<any> = [];
+  
   public category: any = null;
   public newCategory :any = {
     title: "",
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     password: "",
     rePassword: ""
   };
-  public deleteCategory : any = null;
+ 
   constructor(private service: BackendService) {
 
   }
@@ -33,45 +34,52 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
  
   }
+  getId(index:any,value:any){
+    this.service.getById(index,value).subscribe(() =>{  
+    this.category =value;
+    
+    console.log(value);
+    console.log(this.category );
+    });
+  }
  
   readCategories() {
     this.service.getCategory().subscribe((data: any) => {
     this.categories = data;
-    this.category=this.categories[0]
+    
+    
+    
     console.log(this.newCategory);
     console.log(this.categories);
-   
-    for (var _i = 0; _i < this.categories.length; _i++) {
-      const num = this.categories[_i];
-      console.log(num);
-      this.cat = num;
-      console.log(this.cat)
-  }
+    
   
     })
   }
 
 
-
+  
 
 
   getClick() {
     
     this.readCategories();
-
+    
   }
 
-  putButton() {
+  putButton(index:any,value:any) {
   
     
     $(".landing_page").hide();
     $(".new").show();
+    this.getId(index,value);
+    this.category= value;
+    this.category.id = index;
     
-    console.log('çalıştı')}
+  }
     
     putClick(){
    
-    console.log("put-category", this.category);
+  
     this.service.putCategory(this.category.id, this.category).subscribe(() => {
       this.readCategories();
     });

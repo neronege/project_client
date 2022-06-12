@@ -10,7 +10,7 @@ import { ThisReceiver } from '@angular/compiler';
 
 export class UpdateHomeComponent implements OnInit {
   
-  public newCat :any 
+  
  
   
   constructor(public app : AppComponent) { }
@@ -18,10 +18,10 @@ export class UpdateHomeComponent implements OnInit {
   ngOnInit(): void {
   }
  updateClick(){
-  this.newCat = this.app.cat; 
+
   $(".new").hide();
   $(".landing_page").show();
-   console.log('adadasdad');
+   
    this.app.putClick();
  }
 

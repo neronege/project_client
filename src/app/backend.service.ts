@@ -35,6 +35,10 @@ export class BackendService {
   deleteCategory(id:number){
     return this.HttpClient.delete(this.baseURL + "/api" + "/Category/" + id)
   }
+  getById(id: number, category: any){
+    return this.HttpClient.get(this.baseURL + "/api" + "/Category/" + id, category)
+  }
 }
+
 
 
